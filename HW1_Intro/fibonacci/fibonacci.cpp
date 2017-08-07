@@ -22,17 +22,17 @@ int fibonacci_naive(int n)
     return fibonacci_naive(n - 1) + fibonacci_naive(n - 2);
 }
 
-int fibonacci_fast(int n) 
+long long fibonacci_fast(int n) 
 {
     if (n <= 1)
         return n;
 
-    int previous = 0;
-    int current  = 1;
+    long long previous = 0;
+    long long current  = 1;
 
     for (int i = 0; i < n - 1; ++i) 
 	{
-        int tmp_previous = previous;
+        long long tmp_previous = previous;
         previous = current;
         current = tmp_previous + current;
     }
@@ -47,12 +47,17 @@ void test_solution() {
 }
 
 int main() {
-    int n = 0;
-    std::cin >> n;
-
+  int n = 0;
+	int flg = 0;
     //std::cout << fibonacci_naive(n) << '\n';
-    test_solution();
-    std::cout << fibonacci_fast(n) << '\n';
-	//system("pause");
-    return 0;
+    //test_solution();
+	while (flg == 0){
+		std::cin >> n;
+		std::cout << fibonacci_fast(n) << '\n';
+		std::cout << "Continue? (0)" << std::endl;
+		std::cin >> flg;
+	}
+	
+	system("pause");
+  return 0;
 }
